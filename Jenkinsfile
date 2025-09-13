@@ -15,10 +15,12 @@ pipeline {
 
         stage('Deploy to Testing') {
             steps {
+                sshagent(['aws-ec2-key']) {
                     sh """
                     ssh -o StrictHostKeyChecking=no ec2-user@$TESTING_SERVER "sudo rm -rf /var/www/html/*"
                     ssh -o StrictHostKeyChecking=no ec2-user@$TESTING_SERVER "git clone $REPO_URL /var/www/html"
                     """
+                }     
             }
         }
 
@@ -41,10 +43,12 @@ pipeline {
                 expression { currentBuild.result == 'SUCCESS' }
             }
             steps {
+                sshagent(['aws-ec2-key']) {
                     sh """
                     ssh -o StrictHostKeyChecking=no ec2-user@$PRODUCTION_SERVER "sudo rm -rf /var/www/html/*"
                     ssh -o StrictHostKeyChecking=no ec2-user@$PRODUCTION_SERVER "git clone $REPO_URL /var/www/html"
-                    """       
+                    """
+                }    
             }
         }
     }
