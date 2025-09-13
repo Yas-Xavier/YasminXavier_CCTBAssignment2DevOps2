@@ -1,9 +1,9 @@
 pipeline {
     agent any
     environment {
-        REPO_URL = '<your-github-repo-url>'
-        TESTING_SERVER = '<Testing-EC2-IP>'
-        PRODUCTION_SERVER = '<Production-EC2-IP>'
+        REPO_URL = 'https://github.com/Yas-Xavier/YasminXavier_CCTBAssignment2DevOps2'
+        TESTING_SERVER = '54.226.35.49'
+        PRODUCTION_SERVER = '3.80.127.61'
     }
 
     stages {
