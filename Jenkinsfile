@@ -42,9 +42,9 @@ pipeline {
         }
 
         stage('Deploy to Production') {
-          /*  when {
+            when {
                 expression { currentBuild.result == 'SUCCESS' }
-            } */
+            } 
             steps {
                 sshagent(['aws-ec2-key']) {
                     sh """
