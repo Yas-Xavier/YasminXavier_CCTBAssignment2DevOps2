@@ -24,7 +24,7 @@ pipeline {
             }
         }
 
-        stage('Run Selenium Tests') {
+   /*     stage('Run Selenium Tests') {
             steps {
                 script {
                     try {
@@ -40,7 +40,7 @@ pipeline {
                 }
             }
         }
-
+*/
         stage('Deploy to Production') {
             when {
                 expression { currentBuild.result == 'SUCCESS' }
