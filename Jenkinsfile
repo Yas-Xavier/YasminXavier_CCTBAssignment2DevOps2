@@ -17,8 +17,7 @@ pipeline {
             steps {
                 sshagent(['aws-ec2-key']) {
                     sh """
-                    ssh -o StrictHostKeyChecking=no ec2-user@$TESTING_SERVER "sudo rm -rf /var/www/html/*'
-                    sudo rm -rf /var/www/html && sudo mkdir -p /var/www/html && sudo chown ec2-user:ec2-user /var/www/html'
+                    ssh -o StrictHostKeyChecking=no ec2-user@$TESTING_SERVER "sudo rm -rf /var/www/html/*"
                     ssh -o StrictHostKeyChecking=no ec2-user@$TESTING_SERVER "git clone $REPO_URL /var/www/html"
                     """
                 }     
