@@ -3,7 +3,7 @@ const {Builder, By, until} = require('selenium-webdriver');
 (async function testForm() {
   let driver = await new Builder().forBrowser('chrome').build();
   try {
-    await driver.get('http://<TESTING-IP>/');
+    await driver.get('http://54.226.35.49/');
     await driver.findElement(By.name('name')).sendKeys('Alice');
     await driver.findElement(By.name('email')).sendKeys('alice@example.com');
     await driver.findElement(By.name('role')).sendKeys('Developer');
@@ -17,3 +17,4 @@ const {Builder, By, until} = require('selenium-webdriver');
     await driver.quit();
   }
 })();
+
