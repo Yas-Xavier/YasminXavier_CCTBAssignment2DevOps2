@@ -29,7 +29,6 @@ pipeline {
                 script {
                     try {
                          dir('selenium-tests') {
-                            sh 'npm install'
                             sh 'node test_form.js'
                         }
                        // sh 'node ~/selenium-tests/test_form.js'
