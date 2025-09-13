@@ -1,0 +1,11 @@
+{
+  "name": "selenium-tests",
+  "version": "1.0.0",
+  "description": "Selenium tests for Jenkins pipeline",
+  "scripts": {
+    "test": "node test_form.js"
+  },
+  "dependencies": {
+    "selenium-webdriver": "4.33.0"
+  }
+}
