@@ -28,10 +28,10 @@ pipeline {
             steps {
                 script {
                     try {
-                        // dir('selenium-tests') {
-                          //  sh 'node test_form.js'
-                       // }
-                       sh 'node ~/selenium-tests/test_form.js'
+                         dir('selenium-tests') {
+                            sh 'node test_form.js'
+                        }
+                      // sh 'node ~/selenium-tests/test_form.js'
                         currentBuild.result = 'SUCCESS'
                     } catch (Exception e) {
                         currentBuild.result = 'FAILURE'
