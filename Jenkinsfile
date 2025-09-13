@@ -15,12 +15,19 @@ pipeline {
 
         stage('Deploy to Testing') {
             steps {
-                sshagent(['aws-ec2-key']) {
+                withCredentials([sshUserPrivateKey(credentialsId: 'aws-ec2-key', keyFileVariable: 'KEY_FILE', usernameVariable: 'USER')]) {
                     sh """
-                    ssh -o StrictHostKeyChecking=no ec2-user@$TESTING_SERVER "sudo rm -rf /var/www/html/*"
-                    ssh -o StrictHostKeyChecking=no ec2-user@$TESTING_SERVER "git clone $REPO_URL /var/www/html"
+                    ssh -i $KEY_FILE -o StrictHostKeyChecking=no $USER@$TESTING_SERVER "sudo rm -rf /var/www/html/*"
+                    ssh -i $KEY_FILE -o StrictHostKeyChecking=no $USER@$TESTING_SERVER "git clone $REPO_URL /var/www/html"
                     """
                 }
+
+                //sshagent(['aws-ec2-key']) {
+                   // sh """
+                   // ssh -o StrictHostKeyChecking=no ec2-user@$TESTING_SERVER "sudo rm -rf /var/www/html/*"
+                  //  ssh -o StrictHostKeyChecking=no ec2-user@$TESTING_SERVER "git clone $REPO_URL /var/www/html"
+                  //  """
+                //}
             }
         }
 
