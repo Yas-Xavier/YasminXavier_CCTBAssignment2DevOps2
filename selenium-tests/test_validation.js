@@ -3,7 +3,7 @@ require('chromedriver');
 const {Builder, By, until} = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 
-const TESTING_URL = process.env.TESTING_URL || 'http://<TESTING-IP>/';
+const TESTING_URL = process.env.TESTING_URL || 'http://54.226.35.49/';
 
 (async function testValidation() {
   const options = new chrome.Options();
@@ -37,3 +37,4 @@ const TESTING_URL = process.env.TESTING_URL || 'http://<TESTING-IP>/';
   }
 })();
 EOF
+
